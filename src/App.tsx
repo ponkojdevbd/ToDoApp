@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 py-10 px-4">
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
+      <div className="max-w-md mx-auto bg-white/90 rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
           My ToDo List
         </h1>
@@ -67,6 +67,34 @@ function App() {
           {todos.length} {todos.length === 1 ? "task" : "tasks"} total
         </div>
       </div>
+      <footer className="mt-6 text-center text-sm text-white">
+        &copy; {new Date().getFullYear()} Ponkoj Mondol. All rights reserved.
+        <div className="mt-2 text-lg flex justify-center gap-2">
+          <a
+            href="https://www.github.com/ponkojdevbd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="light-icon-brand-github"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/ponkoj-mondol-bd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="light-icon-brand-linkedin"></i>
+          </a>
+
+          <a
+            href="https://www.facebook.com/ponkoj.mondol.bd"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="light-icon-brand-facebook"></i>
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
