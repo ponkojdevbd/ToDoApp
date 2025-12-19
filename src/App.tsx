@@ -5,6 +5,8 @@ import { TodoList } from "./components/TodoList";
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editText, setEditText] = useState("");
 
   const addTodo = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +32,28 @@ function App() {
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const startEditTodo = (id: number) => {
+    const todo = todos.find((t) => t.id === id);
+    if (todo) {
+      setEditingId(id);
+      setEditText(todo.text);
+    }
+  };
+
+  const updateTodo = (id: number) => {
+    if (!editText.trim()) return;
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: editText } : todo))
+    );
+    setEditingId(null);
+    setEditText("");
+  };
+
+  const cancelEdit = () => {
+    setEditingId(null);
+    setEditText("");
   };
 
   return (
@@ -61,6 +85,12 @@ function App() {
           todos={todos}
           toggleComplete={toggleComplete}
           deleteTodo={deleteTodo}
+          editTodo={startEditTodo}
+          editingId={editingId}
+          editText={editText}
+          setEditText={setEditText}
+          updateTodo={updateTodo}
+          cancelEdit={cancelEdit}
         />
 
         <div className="mt-6 text-center text-sm text-gray-500">
@@ -69,27 +99,30 @@ function App() {
       </div>
       <footer className="mt-6 text-center text-sm text-white">
         &copy; {new Date().getFullYear()} Ponkoj Mondol. All rights reserved.
-        <div className="mt-2 text-lg flex justify-center gap-2">
+        <div className="mt-2 text-xl flex justify-center gap-4">
           <a
             href="https://www.github.com/ponkojdevbd"
             target="_blank"
             rel="noopener noreferrer"
+            title="Github"
           >
             <i className="light-icon-brand-github"></i>
           </a>
 
           <a
-            href="https://www.linkedin.com/in/ponkoj-mondol-bd"
+            href="https://www.ponkojmondol.top"
             target="_blank"
             rel="noopener noreferrer"
+            title="Portfolio"
           >
-            <i className="light-icon-brand-linkedin"></i>
+            <i className="light-icon-world"></i>
           </a>
 
           <a
             href="https://www.facebook.com/ponkoj.mondol.bd"
             target="_blank"
             rel="noopener noreferrer"
+            title="Facebook"
           >
             <i className="light-icon-brand-facebook"></i>
           </a>

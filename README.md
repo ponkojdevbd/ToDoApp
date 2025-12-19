@@ -1,4 +1,4 @@
-# React + TypeScript + Tailwind CSS Template
+# Todo App
 
 This is a project template using Vite, React, TypeScript, and Tailwind CSS v4.
 
@@ -36,3 +36,9 @@ This is a project template using Vite, React, TypeScript, and Tailwind CSS v4.
 - `npm run build`: Build for production.
 - `npm run preview`: Preview production build.
 - `npm run lint`: Run ESLint.
+
+## Icons
+
+- **Light Icons**: A collection of free and open-source icons for use in web and mobile applications.
+- **Source**: https://github.com/lightvue/light-icons
+- **Website**: https://icons.lightvue.org/
